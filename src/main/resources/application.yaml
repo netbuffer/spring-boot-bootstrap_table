@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: dev
+logging:
+  config: classpath:logback.xml
+
+# 环境变量
+---
+spring:
+  profiles: dev
+server:
+  context-path: /dev
+
+---
+spring:
+  profiles: test
+server:
+  context-path: /test
+
+---
+spring:
+  profiles: product
+server:
+  context-path: /product
