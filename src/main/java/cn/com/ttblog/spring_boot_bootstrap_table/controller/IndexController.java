@@ -149,6 +149,13 @@ public class IndexController {
 		throw new RuntimeException("test error");
 	}
 
+	@RequestMapping("/sysexit")
+	public String sysexit(){
+		//退出当前jvm，导致容器停止(tomcat关闭等)
+		System.exit(-1);
+		return "exit";
+	}
+
 	@ExceptionHandler
 	public ModelAndView handleAllException(Exception ex) {
 		ModelAndView mav = new ModelAndView("500");
