@@ -9,9 +9,12 @@ spring:
 ---
 spring:
   profiles: dev
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
 server:
   context-path: /dev
-
 ---
 spring:
   profiles: test

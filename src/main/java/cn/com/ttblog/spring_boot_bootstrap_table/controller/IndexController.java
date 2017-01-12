@@ -43,7 +43,13 @@ public class IndexController {
 	
 	@Autowired  
     private ApplicationContext applicationContext;  
-	
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String index(){
+		logger.info("index页面");
+		return "index";
+	}
+
 	@RequestMapping("/login")
 	public String login(HttpSession session, HttpServletRequest request,
 			HttpServletResponse response, String username, String password,@RequestParam(value="requri",required=false) String requri) {
