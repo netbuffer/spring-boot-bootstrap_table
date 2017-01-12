@@ -2,7 +2,8 @@ spring:
   profiles:
     active: dev
 logging:
-  config: classpath:logback.xml
+  # loback配置文件命名为logback.xml会导致启动不起来
+  config: classpath:logback-springboot.xml
 
 # 环境变量
 ---
