@@ -51,7 +51,7 @@
         </connectionSource>  
     </appender> -->
 	<springProfile name="dev">
-		<logger name="org.springframework" level="OFF" />
+		<logger name="org.springframework" level="DEBUG" />
 		<logger name="org.hibernate" level="OFF" />
 		<logger name="org.apache" level="INFO" />
 		<logger name="cn.com.ttblog.ssmbootstrap_table" level="INFO" />

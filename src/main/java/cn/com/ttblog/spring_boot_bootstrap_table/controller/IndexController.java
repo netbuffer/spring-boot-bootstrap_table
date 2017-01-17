@@ -50,6 +50,12 @@ public class IndexController {
 		return "index";
 	}
 
+	@RequestMapping(value = "/welcome",method = RequestMethod.GET)
+	public String welcome(){
+		logger.info("welcome页面");
+		return "welcome";
+	}
+
 	@RequestMapping("/login")
 	public String login(HttpSession session, HttpServletRequest request,
 			HttpServletResponse response, String username, String password,@RequestParam(value="requri",required=false) String requri) {
