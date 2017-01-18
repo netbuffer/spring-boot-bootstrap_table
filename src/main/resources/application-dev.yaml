@@ -8,9 +8,10 @@ server:
 #    username: root
 #    password: root
 #    initial-size: 3
+spring:
   mvc:
     view:
-      suffix: .jsp
-      prefix: /WEB-INF/jsp/
+      prefix: /
+      suffix: .jspaa
 #      prefix: /templates/
 #      suffix: .html

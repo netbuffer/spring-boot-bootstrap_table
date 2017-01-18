@@ -4,15 +4,14 @@ spring:
 logging:
   # loback配置文件命名为logback.xml会导致启动不起来
   config: classpath:logback-springboot.xml
+endpoints:
+  shutdown:
+    enabled: true
 
 # 环境变量
 ---
 spring:
   profiles: dev
-  mvc:
-    static-path-pattern: /**
-  resources:
-    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
 server:
   context-path: /dev
 ---

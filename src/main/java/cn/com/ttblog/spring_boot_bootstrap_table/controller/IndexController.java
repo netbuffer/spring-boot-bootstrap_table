@@ -47,12 +47,13 @@ public class IndexController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(){
 		logger.info("index页面");
-		return "index";
+		return "redirect:index.html";
 	}
 
 	@RequestMapping(value = "/welcome",method = RequestMethod.GET)
-	public String welcome(){
+	public String welcome(Model m){
 		logger.info("welcome页面");
+		m.addAttribute("user","world");
 		return "welcome";
 	}
 

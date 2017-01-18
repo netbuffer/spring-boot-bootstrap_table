@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<property name="logname" value="ssmbootstrap_table" />
-	<property name="logbase" value="${catalina.base}/logs/ssmbootstrap_table/" />
+	<property name="logname" value="spring-boot-bootstrap_table" />
+	<property name="logbase" value="${catalina.base}/logs/spring-boot-bootstrap_table/" />
 	<jmxConfigurator />
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder charset="utf-8">
@@ -54,13 +54,13 @@
 		<logger name="org.springframework" level="DEBUG" />
 		<logger name="org.hibernate" level="OFF" />
 		<logger name="org.apache" level="INFO" />
-		<logger name="cn.com.ttblog.ssmbootstrap_table" level="INFO" />
+		<logger name="cn.com.ttblog.spring_boot_bootstrap_table" level="INFO" />
 	</springProfile>
 
 	<springProfile name="test">
 		<logger name="org.springframework" level="DEBUG" />
 		<logger name="java.sql" level="OFF" />
-		<logger name="cn.com.ttblog.ssmbootstrap_table" level="INFO" />
+		<logger name="cn.com.ttblog.spring_boot_bootstrap_table" level="INFO" />
 		<logger name="jdbc.resultsettable" level="INFO" />
 		<logger name="jdbc.connection" level="OFF" />
 		<logger name="jdbc.audit" level="OFF" />
@@ -74,7 +74,7 @@
 	<springProfile name="product">
 		<logger name="org.springframework" level="WARN" />
 		<logger name="java.sql" level="OFF" />
-		<logger name="cn.com.ttblog.ssmbootstrap_table" level="INFO" />
+		<logger name="cn.com.ttblog.spring_boot_bootstrap_table" level="INFO" />
 		<logger name="jdbc.resultsettable" level="OFF" />
 		<logger name="jdbc.connection" level="OFF" />
 		<logger name="jdbc.audit" level="OFF" />
