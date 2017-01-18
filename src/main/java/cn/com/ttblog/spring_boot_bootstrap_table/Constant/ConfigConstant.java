@@ -6,7 +6,7 @@ public class ConfigConstant {
 	 */
 	public static final String USERTABLE="user";
 	public static final String ISLOGIN = "islogin";
-	public static final String USERNAME = "username";
+	public static final String USERNAME = "admin";
 	public static final String EXCELSTR = "xls";
 	public static final String PROJECTNAME = "spring-boot-bootstrap_table";
 }

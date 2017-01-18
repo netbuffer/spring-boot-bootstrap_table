@@ -8,10 +8,11 @@ server:
 #    username: root
 #    password: root
 #    initial-size: 3
-spring:
-  mvc:
-    view:
-      prefix: /
-      suffix: .jspaa
+# 测试发现在Config文件中配置jsp的路径才有效,这里配置不生效
+#spring:
+#  mvc:
+#    view:
+#      prefix: /
+#      suffix: .jspaa
 #      prefix: /templates/
 #      suffix: .html
