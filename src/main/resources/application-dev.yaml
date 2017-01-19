@@ -1,5 +1,11 @@
 server:
   port: 8081
+endpoints:
+  enabled: true #可以在这里禁用actuator
+  shutdown:
+    enabled: true #启用shutdown
+management:
+  context-path: /mge #actuator访问路径前缀,便于做统一的拦截处理
 #spring:
 #  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource
