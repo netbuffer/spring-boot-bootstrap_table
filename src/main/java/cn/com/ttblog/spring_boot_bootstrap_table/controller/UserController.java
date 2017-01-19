@@ -1,7 +1,9 @@
 package cn.com.ttblog.spring_boot_bootstrap_table.controller;
 
+import cn.com.ttblog.spring_boot_bootstrap_table.Constant.ConfigConstant;
 import cn.com.ttblog.spring_boot_bootstrap_table.model.User;
 import cn.com.ttblog.spring_boot_bootstrap_table.service.IUserService;
+import com.alibaba.fastjson.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -95,6 +99,45 @@ public class UserController {
 		}
 		result.put("user",user);
 		return result;
+	}
+
+	@RequestMapping("/datacount")
+	public @ResponseBody Map<String, Object> datacount() {
+		logger.debug("获取datacount");
+		List<Map<String, Object>> counts = userService.getDataSum();
+		JSONArray categorys = new JSONArray();
+		JSONArray nums = new JSONArray();
+		for (Map<String, Object> m : counts) {
+			categorys.add(m.get("adddate")==null?"":m.get("adddate").toString());
+			nums.add(m.get("num").toString());
+		}
+		logger.debug("categorys:{},nums:{}", categorys, nums);
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("c", categorys);
+		data.put("d", nums);
+		return data;
+	}
+
+	@RequestMapping("/newdata")
+	public String newdata(HttpSession session, Model model) {
+		DecimalFormat df = new DecimalFormat("0.00");
+		// Display the total amount of memory in the Java virtual machine.
+		long totalMem = Runtime.getRuntime().totalMemory() / 1024 / 1024;
+		System.out.println(df.format(totalMem) + " MB");
+		// Display the maximum amount of memory that the Java virtual machine
+		// will attempt to use.
+		long maxMem = Runtime.getRuntime().maxMemory() / 1024 / 1024;
+		System.out.println(df.format(maxMem) + " MB");
+		// Display the amount of free memory in the Java Virtual Machine.
+		long freeMem = Runtime.getRuntime().freeMemory() / 1024 / 1024;
+		System.out.println(df.format(freeMem) + " MB");
+		logger.info("执行前:{}", model);
+		int newcount = userService.getNewData();
+		String username = session.getAttribute(ConfigConstant.USERNAME).toString();
+		model.addAttribute("newcount", newcount);
+		model.addAttribute("username", username);
+		logger.info("执行后:{}", model);
+		return "newdata";
 	}
 
 	@RequestMapping(value="/photos",method={RequestMethod.GET,RequestMethod.HEAD})

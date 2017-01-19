@@ -35,17 +35,17 @@
             "format":"YYYY-MM-DD HH:mm:ss"
 		});
 
-		$.get("test/indexurl",function(data){
-			//position:fixed;bottom:0;left: 0; z-index:99999 ;
-			$('#qr').popover({
-				title:"扫一扫",
-				content:"<img src='test/qr?width=200&height=200&param="+data+"&r=51&g=0&b=51' style='width:100px;height:100px;' alt='扫一扫访问'>",
-				html:true,
-				placement:"bottom",
-				trigger:"hover"
-			});
-		});
-		$.getJSON('newdata.json', function(data) {
+//		$.get("test/indexurl",function(data){
+//			//position:fixed;bottom:0;left: 0; z-index:99999 ;
+//			$('#qr').popover({
+//				title:"扫一扫",
+//				content:"<img src='test/qr?width=200&height=200&param="+data+"&r=51&g=0&b=51' style='width:100px;height:100px;' alt='扫一扫访问'>",
+//				html:true,
+//				placement:"bottom",
+//				trigger:"hover"
+//			});
+//		});
+		$.getJSON('user/newdata.json', function(data) {
 			$("#xinzeng").text(data.newcount);
 			$("#xinzeng").tooltip({
 				"title" : "今日新增数据，点击查看",
@@ -53,7 +53,7 @@
 			});
 			$("#xinzeng").mouseover();
 			$(".login_username").text(data.username);
-			$.getJSON('datacount', function(data) {
+			$.getJSON('user/datacount', function(data) {
 				var myChart = echarts.init(document
 						.getElementById('echarts_test'));
 				var option = {
