@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -105,4 +107,21 @@ public class UserServiceImpl implements IUserService {
 	public void deleteById(Long id) {
 		userDao.delete(id);
 	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public User findByIdForUpdate(long id) {
+		return userDao.findByIdForUpdate(id);
+	}
+
+    @Override
+    public User updateUserStatus(long id, boolean isAdmin) {
+	    User user=findByIdForUpdate(id);//会阻塞掉其它select .. for update查询
+	    if(String.valueOf(user.getIsAdmin()).equals(isAdmin)){
+	        return user;
+        }
+        user.setIsAdmin(isAdmin?1:0);
+	    userDao.save(user);
+        return user;
+    }
 }
