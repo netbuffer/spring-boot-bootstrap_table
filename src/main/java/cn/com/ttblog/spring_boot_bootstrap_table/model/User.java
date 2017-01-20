@@ -45,6 +45,8 @@ public class User implements Serializable {
 	private transient String comments;
 	// 用户使用的地址
 	private List<Address> addresses;
+	//1是admin 0不是admin
+	private int isAdmin;
 //	private String[] img;
 //
 //	public String[] getImg() {
@@ -225,4 +227,11 @@ public class User implements Serializable {
 		return ToStringBuilder.reflectionToString(this,null,true);
 	}
 
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
+	}
 }

@@ -21,4 +21,6 @@ public interface IUserService {
 	public void addUM();
 	public void addUMtest() throws IllegalArgumentException;
 	public void deleteById(Long id);
+    User findByIdForUpdate(long id);
+	User updateUserStatus(long id,boolean isAdmin);
 }

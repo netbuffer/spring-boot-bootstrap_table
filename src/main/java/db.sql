@@ -113,3 +113,6 @@ CREATE TABLE `t_crud_demosub` (
   `id` bigint(20) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `user`
+ADD COLUMN `is_admin`  int NULL COMMENT '是否是管理员1是管理员，0不是管理员' AFTER `adddate`;

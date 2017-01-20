@@ -21,6 +21,11 @@ public class SpringBootBootstrapTableApplicationTests {
 	}
 
 	@Test
+	public void testFindByIdForUpdate(){
+		userService.findByIdForUpdate(1L);
+	}
+
+	@Test
 	public void test(){
 		userService.getDataSum();
 	}

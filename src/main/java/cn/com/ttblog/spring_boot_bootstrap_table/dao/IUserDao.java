@@ -80,6 +80,10 @@ public interface IUserDao extends JpaRepository<User,Long>,JpaSpecificationExecu
 	@Async
 	Future<User> findById(Long id);
 
+	@Query(value = "select u from User u where u.id=?1")
+	@Lock(value = LockModeType.PESSIMISTIC_WRITE)
+	User findByIdForUpdate(Long id);
+
 	User findByN(String name);
 
 	//直接关联查询出card实体，不再发送额外的sql
