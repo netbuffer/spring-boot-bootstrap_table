@@ -1,5 +1,6 @@
 package cn.com.ttblog.spring_boot_bootstrap_table.config;
 
+import cn.com.ttblog.spring_boot_bootstrap_table.interceptor.SpringMvcInterceptor;
 import cn.com.ttblog.spring_boot_bootstrap_table.views.JsonViewResolver;
 import com.alibaba.fastjson.support.spring.FastJsonJsonView;
 import org.springframework.beans.factory.BeanFactory;
@@ -18,6 +19,9 @@ import org.springframework.web.servlet.view.JstlView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  spring boot默认的错误处理由org.springframework.boot.autoconfigure.web.BasicErrorController处理，
+ */
 @Configuration
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter{
@@ -53,10 +57,17 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
     }
 
     // 注册自定义拦截器
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor();
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new SpringMvcInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/static")
+                .excludePathPatterns("/css")
+                .excludePathPatterns("/image")
+                .excludePathPatterns("/js")
+                .excludePathPatterns("/*.html")
+                .excludePathPatterns("/favicon.ico");
+    }
 
     // 文件上传设置
     @Bean
