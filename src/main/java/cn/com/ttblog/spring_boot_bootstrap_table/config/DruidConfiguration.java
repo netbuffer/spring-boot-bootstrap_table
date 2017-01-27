@@ -3,6 +3,7 @@ package cn.com.ttblog.spring_boot_bootstrap_table.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -30,7 +31,8 @@ public class DruidConfiguration {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return druidDataSource;
+        DataSourceSpy dataSourceSpy=new DataSourceSpy(druidDataSource);
+        return dataSourceSpy;
     }
 
     @Bean
