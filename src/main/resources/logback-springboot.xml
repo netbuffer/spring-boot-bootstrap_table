@@ -55,6 +55,12 @@
 		<logger name="org.hibernate" level="OFF" />
 		<logger name="org.apache" level="INFO" />
 		<logger name="cn.com.ttblog.spring_boot_bootstrap_table" level="INFO" />
+		<logger name="jdbc.resultsettable" level="INFO" />
+		<logger name="jdbc.connection" level="OFF" />
+		<logger name="jdbc.audit" level="OFF" />
+		<logger name="jdbc.resultset" level="OFF" />
+		<logger name="jdbc.sqlonly" level="OFF" />
+		<logger name="jdbc.sqltiming" level="INFO" />
 	</springProfile>
 
 	<springProfile name="test">
