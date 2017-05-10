@@ -17,19 +17,27 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  spring boot默认的错误处理由org.springframework.boot.autoconfigure.web.BasicErrorController处理，
+ * spring boot默认的错误处理由org.springframework.boot.autoconfigure.web.BasicErrorController处理，
  */
 @Configuration
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;
+
+    /**
+     * 映射所有请求到templates目录下
+     * @param registry
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/templates/");
+    }
 
     @Override
     public void configureContentNegotiation(
@@ -72,15 +80,15 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     }
 
     @Bean
-    public ViewResolver jsonViewResolver(){
-        JsonViewResolver jsonViewResolver=new JsonViewResolver();
+    public ViewResolver jsonViewResolver() {
+        JsonViewResolver jsonViewResolver = new JsonViewResolver();
         return jsonViewResolver;
     }
 
     @Bean
-    public ViewResolver thymeleafViewResolver(){
-        ThymeleafViewResolver thymeleafViewResolver=new ThymeleafViewResolver();
-        SpringTemplateEngine springTemplateEngine=new SpringTemplateEngine();
+    public ViewResolver thymeleafViewResolver() {
+        ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
+        SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
         springTemplateEngine.setTemplateResolver(springTemplateResolver());
         thymeleafViewResolver.setTemplateEngine(springTemplateEngine);
         thymeleafViewResolver.setCharacterEncoding("utf-8");
@@ -89,7 +97,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 
     @Bean
     public ITemplateResolver springTemplateResolver() {
-        SpringResourceTemplateResolver springResourceTemplateResolver=new SpringResourceTemplateResolver();
+        SpringResourceTemplateResolver springResourceTemplateResolver = new SpringResourceTemplateResolver();
         springResourceTemplateResolver.setCharacterEncoding("utf-8");
         springResourceTemplateResolver.setCacheable(false);
         springResourceTemplateResolver.setPrefix("classpath:/templates/");
@@ -106,6 +114,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext=applicationContext;
+        this.applicationContext = applicationContext;
     }
 }
