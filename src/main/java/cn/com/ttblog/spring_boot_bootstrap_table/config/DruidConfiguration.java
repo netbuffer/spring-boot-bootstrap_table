@@ -1,11 +1,7 @@
 package cn.com.ttblog.spring_boot_bootstrap_table.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.support.http.StatViewServlet;
-import com.alibaba.druid.support.http.WebStatFilter;
 import net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy;
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
@@ -14,10 +10,10 @@ import java.sql.SQLException;
 @Configuration
 public class DruidConfiguration {
 
-    @Bean
-    public ServletRegistrationBean druidServlet() {
-        return new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
-    }
+//    @Bean
+//    public ServletRegistrationBean druidServlet() {
+//        return new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+//    }
 
     @Bean
     public DataSource druidDataSource() {
@@ -35,12 +31,12 @@ public class DruidConfiguration {
         return dataSourceSpy;
     }
 
-    @Bean
-    public FilterRegistrationBean filterRegistrationBean() {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        filterRegistrationBean.setFilter(new WebStatFilter());
-        filterRegistrationBean.addUrlPatterns("/*");
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
-        return filterRegistrationBean;
-    }
+//    @Bean
+//    public FilterRegistrationBean filterRegistrationBean() {
+//        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+//        filterRegistrationBean.setFilter(new WebStatFilter());
+//        filterRegistrationBean.addUrlPatterns("/*");
+//        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+//        return filterRegistrationBean;
+//    }
 }

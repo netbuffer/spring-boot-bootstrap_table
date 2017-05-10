@@ -1,6 +1,6 @@
 package cn.com.ttblog.spring_boot_bootstrap_table.controller;
 
-import cn.com.ttblog.spring_boot_bootstrap_table.Constant.ConfigConstant;
+import cn.com.ttblog.spring_boot_bootstrap_table.constant.ConfigConstant;
 import cn.com.ttblog.spring_boot_bootstrap_table.service.IUserService;
 import org.apache.commons.codec.binary.Base64;
 import org.joda.time.DateTime;
@@ -40,7 +40,7 @@ public class IndexController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(){
 		logger.info("index页面");
-		return "redirect:index.html";
+		return "redirect:/index.html";
 	}
 
 	@RequestMapping(value = "/welcome",method = RequestMethod.GET)
@@ -67,7 +67,7 @@ public class IndexController {
 	public String login(HttpSession session, HttpServletRequest request,
 			HttpServletResponse response, String username, String password,@RequestParam(value="requri",required=false) String requri) {
 //		RequestContextUtils.getWebApplicationContext(request)
-		logger.info("进入username:{},pwd:{},requri:{}", username, password,requri);
+//		logger.info("进入username:{},pwd:{},requri:{}", username, password,requri);
 		if (username.equals(ConfigConstant.USERNAME)
 				&& password.equals("admin")) {
 			session.setAttribute(ConfigConstant.ISLOGIN, true);
@@ -82,7 +82,7 @@ public class IndexController {
 			if(requri!=null&&requri.length()>0){
 				String uri=new String(Base64.decodeBase64(requri));
 				String touri=uri.substring(request.getContextPath().length()+1);
-				logger.debug("request.getContextPath():{}  decode-requri:{}  touri:{}",request.getContextPath(),uri,touri);
+//				logger.debug("request.getContextPath():{}  decode-requri:{}  touri:{}",request.getContextPath(),uri,touri);
 				return "redirect:/"+touri;
 			}
 			return "redirect:/manage.html";

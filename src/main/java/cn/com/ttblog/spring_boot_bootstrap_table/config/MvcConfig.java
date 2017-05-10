@@ -2,8 +2,9 @@ package cn.com.ttblog.spring_boot_bootstrap_table.config;
 
 import cn.com.ttblog.spring_boot_bootstrap_table.interceptor.SpringMvcInterceptor;
 import cn.com.ttblog.spring_boot_bootstrap_table.views.JsonViewResolver;
-import com.alibaba.fastjson.support.spring.FastJsonJsonView;
-import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -13,9 +14,11 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
-
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +27,9 @@ import java.util.List;
  */
 @Configuration
 @EnableWebMvc
-public class MvcConfig extends WebMvcConfigurerAdapter{
+public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
+
+    private ApplicationContext applicationContext;
 
     @Override
     public void configureContentNegotiation(
@@ -39,21 +44,10 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
         ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
         resolver.setContentNegotiationManager(manager);
         List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
-        // jsp view resolver
-        resolvers.add(internalResourceViewResolver());
-        JsonViewResolver jsonViewResolver=new JsonViewResolver();
-        resolvers.add(jsonViewResolver);
+        resolvers.add(jsonViewResolver());
+        resolvers.add(thymeleafViewResolver());
         resolver.setViewResolvers(resolvers);
         return resolver;
-    }
-
-    @Bean
-    public ViewResolver internalResourceViewResolver () {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/");
-        viewResolver.setSuffix(".jsp");
-        viewResolver.setViewClass(JstlView.class);
-        return viewResolver;
     }
 
     // 注册自定义拦截器
@@ -77,8 +71,41 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
         return multipartResolver;
     }
 
+    @Bean
+    public ViewResolver jsonViewResolver(){
+        JsonViewResolver jsonViewResolver=new JsonViewResolver();
+        return jsonViewResolver;
+    }
+
+    @Bean
+    public ViewResolver thymeleafViewResolver(){
+        ThymeleafViewResolver thymeleafViewResolver=new ThymeleafViewResolver();
+        SpringTemplateEngine springTemplateEngine=new SpringTemplateEngine();
+        springTemplateEngine.setTemplateResolver(springTemplateResolver());
+        thymeleafViewResolver.setTemplateEngine(springTemplateEngine);
+        thymeleafViewResolver.setCharacterEncoding("utf-8");
+        return thymeleafViewResolver;
+    }
+
+    @Bean
+    public ITemplateResolver springTemplateResolver() {
+        SpringResourceTemplateResolver springResourceTemplateResolver=new SpringResourceTemplateResolver();
+        springResourceTemplateResolver.setCharacterEncoding("utf-8");
+        springResourceTemplateResolver.setCacheable(false);
+        springResourceTemplateResolver.setPrefix("classpath:/templates/");
+        springResourceTemplateResolver.setSuffix(".html");
+        springResourceTemplateResolver.setTemplateMode("HTML5");
+        springResourceTemplateResolver.setApplicationContext(applicationContext);
+        return springResourceTemplateResolver;
+    }
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext=applicationContext;
     }
 }
