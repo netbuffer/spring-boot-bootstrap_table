@@ -1,6 +1,6 @@
 package cn.com.ttblog.spring_boot_bootstrap_table.controller;
 
-import cn.com.ttblog.spring_boot_bootstrap_table.Constant.ConfigConstant;
+import cn.com.ttblog.spring_boot_bootstrap_table.constant.ConfigConstant;
 import cn.com.ttblog.spring_boot_bootstrap_table.service.IUserService;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;

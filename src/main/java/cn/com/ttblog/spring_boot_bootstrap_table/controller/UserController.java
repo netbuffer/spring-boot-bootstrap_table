@@ -1,6 +1,6 @@
 package cn.com.ttblog.spring_boot_bootstrap_table.controller;
 
-import cn.com.ttblog.spring_boot_bootstrap_table.Constant.ConfigConstant;
+import cn.com.ttblog.spring_boot_bootstrap_table.constant.ConfigConstant;
 import cn.com.ttblog.spring_boot_bootstrap_table.model.User;
 import cn.com.ttblog.spring_boot_bootstrap_table.service.IUserService;
 import com.alibaba.fastjson.JSONArray;

@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import cn.com.ttblog.spring_boot_bootstrap_table.Constant.ConfigConstant;
+import cn.com.ttblog.spring_boot_bootstrap_table.constant.ConfigConstant;
 import cn.com.ttblog.spring_boot_bootstrap_table.model.User;
 import cn.com.ttblog.spring_boot_bootstrap_table.service.IUserService;
 import cn.com.ttblog.spring_boot_bootstrap_table.util.AntPathMatcherUtil;
