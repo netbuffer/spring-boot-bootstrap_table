@@ -3,6 +3,7 @@ package cn.com.ttblog.spring_boot_bootstrap_table.controller;
 import cn.com.ttblog.spring_boot_bootstrap_table.Constant.ConfigConstant;
 import cn.com.ttblog.spring_boot_bootstrap_table.service.IUserService;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -83,7 +84,9 @@ public class IndexController {
 				String uri=new String(Base64.decodeBase64(requri));
 				String touri=uri.substring(request.getContextPath().length()+1);
 				logger.debug("request.getContextPath():{}  decode-requri:{}  touri:{}",request.getContextPath(),uri,touri);
-				return "redirect:/"+touri;
+				if(StringUtils.isNotBlank(touri)&&!touri.equals("/")){
+					return "redirect:/"+touri;
+				}
 			}
 			return "redirect:/manage.html";
 		} else {

@@ -197,7 +197,7 @@ public class UserController {
 	@RequestMapping("/userlist")
 	public String userlist(@RequestParam(value="search",required=false)String search,String order, int limit, int offset, Model model) {
 		long startTime = System.nanoTime();
-		logger.info("参数:{},{},{}", order, limit, offset);
+//		logger.info("参数:{},{},{}", order, limit, offset);
 		if(search!=null){
 			try {
 				//get参数乱码问题:http://luanxiyuan.iteye.com/blog/1849169
