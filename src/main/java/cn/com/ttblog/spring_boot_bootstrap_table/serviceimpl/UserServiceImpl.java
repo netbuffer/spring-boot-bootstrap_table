@@ -71,7 +71,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public int getNewData() {
-		return userDao.getNewDate();
+		return userDao.getNewData();
 	}
 
 	@Override

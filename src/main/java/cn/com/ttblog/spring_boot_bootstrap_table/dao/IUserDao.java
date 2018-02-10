@@ -51,7 +51,7 @@ public interface IUserDao extends JpaRepository<User,Long>,JpaSpecificationExecu
 	String querySex(@Param("id") Long id);
 
 	@Query(value = "select count(id) from user where DATE_FORMAT(NOW(),'%Y-%m-%d')=FROM_UNIXTIME(adddate,'%Y-%m-%d')",nativeQuery = true)
-	int getNewDate();
+	int getNewData();
 
 	@Query(value = "select count(id) num,FROM_UNIXTIME(adddate,'%Y-%m-%d') adddate from user group by FROM_UNIXTIME(adddate,'%Y-%m-%d')",nativeQuery = true)
 	List getDataSum();
