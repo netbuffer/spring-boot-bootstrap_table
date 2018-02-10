@@ -5,6 +5,13 @@
 * bootstrap-table1.9
 * bootstrap3  
 * log4jdbc-log4j2
+* spring-data-rest
+
+#### spring-data-rest
+* /rest/user get/post/put/delete
+* /rest/user/{id}
+* /rest/user/search
+& /rest/user/search/queryUserNameLike?name=a
 
 # other projects
 > `ssmbootstrap_table(spring+springmvc+mybatis)` github:[https://github.com/netbuffer/ssmbootstrap_table](https://github.com/netbuffer/ssmbootstrap_table)`/`git@osc:[https://git.oschina.net/gradle/ssmbootstrap_table](https://git.oschina.net/gradle/ssmbootstrap_table)    

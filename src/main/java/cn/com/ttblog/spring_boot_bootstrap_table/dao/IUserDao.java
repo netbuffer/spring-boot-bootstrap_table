@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.scheduling.annotation.Async;
 
 import javax.persistence.LockModeType;
@@ -23,6 +25,7 @@ import java.util.concurrent.Future;
  * JpaRepository<User,Long> 第一个泛型参数指的是实体类，第二个泛型参数指定实体主键类型
  * JpaSpecificationExecutor<User> 泛型参数为实体类
  */
+@RepositoryRestResource(collectionResourceRel = "user", path = "user")
 public interface IUserDao extends JpaRepository<User,Long>,JpaSpecificationExecutor<User> {
 
 	@Lock(LockModeType.PESSIMISTIC_WRITE)// select ... where id=.. for update行级锁
@@ -38,6 +41,7 @@ public interface IUserDao extends JpaRepository<User,Long>,JpaSpecificationExecu
 	List<User> getUserListQueryByName(@Param("search") String search, @Param("order") String order, @Param("limit") int limit, @Param("offset") int offset);
 
 	@Query(value = "select count (u) from User u")
+	@RestResource(exported = false)
 	long getUserListCount();
 
 	@Query(value = "select count (u) from User u where u.name like %?1%")
@@ -75,6 +79,14 @@ public interface IUserDao extends JpaRepository<User,Long>,JpaSpecificationExecu
 
 	//select .. where name like name
 	List<User> findByNameLike(String name);
+
+	/**
+	 * 取消该方法的暴露
+	 * @param name
+	 * @param pageable
+	 * @return
+	 */
+	@RestResource(exported = false)
 	List<User> findByNameLike(String name, Pageable pageable);
 
 	@Async
