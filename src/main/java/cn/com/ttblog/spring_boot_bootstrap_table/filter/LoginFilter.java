@@ -36,6 +36,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 					"                /*/register/**\n" +
 					"                /*/captcha/**\n" +
 					"                /*/css/**\n" +
+					"                /*/static/**\n" +
 					"                /*/js/**\n" +
 					"                /*/image/**\n" +
 					"                /*/jsonp/**\n" +
