@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.mapreduce.GroupBy;
+import org.springframework.data.mongodb.core.mapreduce.GroupByResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
@@ -97,6 +99,13 @@ public class UserDaoImpl implements IUserDao {
 
     @Override
     public List getDataSum() {
+//        Criteria criteria = new Criteria().andOperator(
+//                Criteria.where("createDate").gte(dateFormat.parseObject("2014-10-01 00:00:00")),
+//                Criteria.where("createDate").lt(dateFormat.parseObject("2014-11-01 00:00:00"))
+//        );
+//        mongoTemplate.group(nu, "collectionName", new GroupBy("GroupField"), entityClass);
+        GroupByResults results = mongoTemplate.group("user", new GroupBy("adddate"), User.class);
+        LOGGER.info("results:{}", results);
         return null;
     }
 
