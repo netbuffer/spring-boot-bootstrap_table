@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
  * 使用@ServletComponentScan注解开启servlet、filter、listener的扫描支持，也可以通过代码来注册servlet等
@@ -12,6 +13,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  */
 @ServletComponentScan
 @SpringBootApplication
+@EnableMongoRepositories
 public class SpringBootBootstrapTableApplication extends SpringBootServletInitializer {
 
     @Override

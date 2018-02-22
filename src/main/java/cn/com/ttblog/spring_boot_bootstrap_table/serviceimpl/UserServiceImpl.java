@@ -23,7 +23,7 @@ public class UserServiceImpl implements IUserService {
 	private IUserDao userDao;
 
 	@Override
-	public User getUserById(long userId) {
+	public User getUserById(String userId) {
 		return userDao.getUserById(userId);
 //		return userDao.findOne(userId);
 	}
@@ -47,10 +47,6 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public List<User> getUserList(String order, int limit, int offset) {
-//		if (order!=null&&order.equals("desc")){
-//			return userDao.getUserList(limit,offset,new Sort(Sort.Direction.DESC,"adddate"));
-//		}
-//		return userDao.getUserList(limit,offset,new Sort(Sort.Direction.ASC,"adddate"));
 		return userDao.getUserList(order,limit,offset);
 	}
 
@@ -104,18 +100,18 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(String id) {
 		userDao.delete(id);
 	}
 
 	@Transactional(readOnly = true)
 	@Override
-	public User findByIdForUpdate(long id) {
+	public User findByIdForUpdate(String id) {
 		return userDao.findByIdForUpdate(id);
 	}
 
     @Override
-    public User updateUserStatus(long id, boolean isAdmin) {
+    public User updateUserStatus(String id, boolean isAdmin) {
 	    User user=findByIdForUpdate(id);//会阻塞掉其它select .. for update查询
 	    if(String.valueOf(user.getIsAdmin()).equals(isAdmin)){
 	        return user;
