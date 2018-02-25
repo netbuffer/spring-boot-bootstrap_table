@@ -5,6 +5,7 @@
 * bootstrap-table1.9
 * bootstrap3  
 * log4jdbc-log4j2
+* spring-data-mongodb
 
 # other projects
 > `ssmbootstrap_table(spring+springmvc+mybatis)` github:[https://github.com/netbuffer/ssmbootstrap_table](https://github.com/netbuffer/ssmbootstrap_table)`/`git@osc:[https://git.oschina.net/gradle/ssmbootstrap_table](https://git.oschina.net/gradle/ssmbootstrap_table)    
