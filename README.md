@@ -1,10 +1,10 @@
 ### spring-boot bootstrap_table demo
 ---
 * spring-boot 1.4.3
-* integration with jsp
-* bootstrap-table1.9
-* bootstrap3  
 * log4jdbc-log4j2
+* vue2
+* [bootstrap-vue](https://bootstrap-vue.js.org/docs/components/table)
+* axios
 
 # other projects
 > `ssmbootstrap_table(spring+springmvc+mybatis)` github:[https://github.com/netbuffer/ssmbootstrap_table](https://github.com/netbuffer/ssmbootstrap_table)`/`git@osc:[https://git.oschina.net/gradle/ssmbootstrap_table](https://git.oschina.net/gradle/ssmbootstrap_table)    
