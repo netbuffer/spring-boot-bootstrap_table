@@ -5,7 +5,20 @@ endpoints:
   shutdown:
     enabled: true #启用shutdown
 management:
-  context-path: /mge #actuator访问路径前缀,便于做统一的拦截处理
+  #actuator访问路径前缀,便于做统一的拦截处理
+  context-path: /mge
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 3000
+    database: 0
+    pool:
+      max-active: 5
+      min-idle: 0
+      max-idle: 1
+      max-wait: 3000
+
 #spring:
 #  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource
