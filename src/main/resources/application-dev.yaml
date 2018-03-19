@@ -18,36 +18,24 @@ spring:
       min-idle: 0
       max-idle: 1
       max-wait: 3000
-
-#spring:
-#  datasource:
-#    type: com.alibaba.druid.pool.DruidDataSource
-#    driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://127.0.0.1:3306/u
-#    username: root
-#    password: root
-#    initial-size: 3
-  context-path: /mge
-
-# 配置:https://github.com/alibaba/druid/blob/master/druid-spring-boot-starter/src/test/resources/config-template.properties
-spring:
+  # 配置:https://github.com/alibaba/druid/blob/master/druid-spring-boot-starter/src/test/resources/config-template.properties
   datasource:
-    druid:
-      url: jdbc:mysql://127.0.0.1:3306/u
-      username: root
-      password: root
-      driver-class-name: com.mysql.jdbc.Driver
-      initial-size: 1
-      min-idle: 1
-      max-active: 5
-      validation-query: select 1
-      filters : stat,slf4j,wall
-      filter:
-        slf4j:
-          enabled: true
-          statement-close-after-log-enabled: false
-          result-set-open-after-log-enabled: false
-          result-set-close-after-log-enabled : false
+      druid:
+        url: jdbc:mysql://127.0.0.1:3306/u
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+        initial-size: 1
+        min-idle: 1
+        max-active: 5
+        validation-query: select 1
+        filters : stat,slf4j,wall
+        filter:
+          slf4j:
+            enabled: true
+            statement-close-after-log-enabled: false
+            result-set-open-after-log-enabled: false
+            result-set-close-after-log-enabled : false
 
 #actuator访问路径前缀,便于做统一的拦截处理
 # 测试发现在Config文件中配置jsp的路径才有效,这里配置不生效
