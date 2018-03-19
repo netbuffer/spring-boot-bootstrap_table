@@ -1,3 +1,7 @@
+banner:
+  image:
+    location: docker.jpg
+  location: banner.txt
 spring:
   profiles:
     active: dev
