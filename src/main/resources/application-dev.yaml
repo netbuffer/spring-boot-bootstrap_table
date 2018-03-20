@@ -6,6 +6,8 @@ endpoints:
     enabled: true #启用shutdown
 management:
   context-path: /mge
+  security:
+    enabled: false
 
 # 配置:https://github.com/alibaba/druid/blob/master/druid-spring-boot-starter/src/test/resources/config-template.properties
 spring:
