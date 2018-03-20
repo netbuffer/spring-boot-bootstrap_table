@@ -20,7 +20,12 @@ spring:
       initial-size: 1
       min-idle: 1
       max-active: 5
+      max-wait: 120000
       validation-query: select 1
+      min-evictable-idle-time-millis: 60000
+      max-evictable-idle-time-millis: 600000
+      test-while-idle: true
+      test-on-borrow: true
       filters : stat,slf4j,wall
       filter:
         slf4j:

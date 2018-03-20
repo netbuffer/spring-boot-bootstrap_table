@@ -1,6 +1,10 @@
 ### spring-boot bootstrap_table demo
 ---
-* spring-boot 1.4.3
+* spring-boot 1.5.3
+* spring-boot-starter-actuator
+* spring-boot-devtools
+* spring-data-jpa
+* druid-spring-boot-starter 1.1.4
 * integration with jsp
 * bootstrap-table1.9
 * bootstrap3  
