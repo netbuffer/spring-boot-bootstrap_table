@@ -7,6 +7,10 @@ endpoints:
 management:
   #actuator访问路径前缀,便于做统一的拦截处理
   context-path: /mge
+  security:
+    enabled: false
+
+# 配置:https://github.com/alibaba/druid/blob/master/druid-spring-boot-starter/src/test/resources/config-template.properties
 spring:
   data:
     mongodb:

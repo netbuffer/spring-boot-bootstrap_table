@@ -1,8 +1,12 @@
+banner:
+  image:
+    location: docker.jpg
+  location: banner.txt
 spring:
   profiles:
     active: dev
 logging:
-  # loback配置文件命名为logback.xml会导致启动不起来
+  # logback配置文件命名为logback.xml会导致启动不起来
   config: classpath:logback-springboot.xml
 endpoints:
   shutdown:
