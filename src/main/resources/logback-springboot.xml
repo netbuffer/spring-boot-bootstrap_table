@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true" scanPeriod="5 minutes">
 	<property name="logname" value="spring-boot-bootstrap_table" />
 	<property name="logbase" value="${catalina.base}/logs/spring-boot-bootstrap_table/" />
 	<jmxConfigurator />
@@ -50,7 +50,7 @@
         </connectionSource>  
     </appender> -->
 	<springProfile name="dev">
-		<logger name="org.springframework" level="DEBUG" />
+		<logger name="org.springframework" level="WARN" />
 		<logger name="org.hibernate" level="OFF" />
 		<logger name="org.apache" level="INFO" />
 		<logger name="cn.com.ttblog.spring_boot_bootstrap_table" level="INFO" />
@@ -94,7 +94,7 @@
         <appender-ref ref="ACCESS"/>
     </logger>
 	<root>
-		<level value="INFO" />
+		<level value="WARN" />
 		<appender-ref ref="stdout" />
 		<appender-ref ref="logfile" />
 		<appender-ref ref="ACCESS" />
