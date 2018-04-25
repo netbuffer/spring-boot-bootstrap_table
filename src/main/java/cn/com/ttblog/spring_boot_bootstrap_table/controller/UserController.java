@@ -6,8 +6,6 @@ import cn.com.ttblog.spring_boot_bootstrap_table.service.IUserService;
 import com.alibaba.fastjson.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,7 +30,7 @@ public class UserController {
 	private IUserService userService;
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	private static final String USER_CACHE_STR="userCache";
+
 //	@InitBinder
 //	public void initBinder(WebDataBinder binder){
 //	}
@@ -103,11 +101,6 @@ public class UserController {
 		return result;
 	}
 
-	/**
-	 * https://docs.spring.io/spring/docs/4.2.9.RELEASE/spring-framework-reference/htmlsingle/#cache-spel-context
-	 * @return
-	 */
-	@Cacheable(value = USER_CACHE_STR,key = "#root.methodName")
 	@RequestMapping("/datacount")
 	public @ResponseBody Map<String, Object> datacount() {
 		logger.debug("获取datacount");
@@ -152,7 +145,7 @@ public class UserController {
 		logger.debug("go to user-photos");
 		return "user/photos";
 	}
-	
+
 	@RequestMapping("/showUser/{id}")
 	public String toIndex(@PathVariable("id") int id,
 			HttpServletRequest request, Model model) {
@@ -173,7 +166,7 @@ public class UserController {
 		mav.addObject("model", u);
 		return mav;
 	}
-	
+
 	/**
 	 * 访问pdf视图 http://localhost:8080/sssbootstrap_table/user/userpdfview.pdf
 	 * @param model
@@ -190,11 +183,11 @@ public class UserController {
 		model.addAttribute("columns", columns);
 		return "userpdfview";
 	}
-	
+
 	/**
 	 * http://localhost:8080/sssbootstrap_table/user/userlist?order=asc&limit=10
 	 * &offset=0
-	 * 
+	 *
 	 * @param order
 	 * @param limit
 	 * @param offset
@@ -213,7 +206,7 @@ public class UserController {
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			
+
 		}
 		List<User> users =search==null? userService.getUserList(order, limit, offset): userService.getUserList(search,order, limit, offset);
 		long total = search==null?userService.getUserListCount():userService.getUserListCount(search);
@@ -224,7 +217,7 @@ public class UserController {
 		logger.debug("userlist execute with:{}ns",estimatedTime);
 		return "userlist";
 	}
-	
+
 	@RequestMapping("/delete")
 	@ResponseBody
 	public String delete(@RequestParam(value="id",required=false,defaultValue="0") String id) {
@@ -253,11 +246,5 @@ public class UserController {
 		us.add(userService.getUserById(1));
 		us.add(userService.getUserById(2));
 		return us;
-	}
-
-	@CacheEvict(value = USER_CACHE_STR)
-	@RequestMapping(method = RequestMethod.GET, value = "/evict")
-	public @ResponseBody String evict() {
-		return USER_CACHE_STR;
 	}
 }
