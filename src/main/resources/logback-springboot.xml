@@ -49,11 +49,12 @@
             <password>root</password>  
         </connectionSource>  
     </appender> -->
+	<!--https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#_profile_specific_configuration-->
 	<springProfile name="dev">
 		<logger name="org.springframework" level="WARN" />
 		<logger name="org.hibernate" level="OFF" />
 		<logger name="org.apache" level="INFO" />
-		<logger name="cn.com.ttblog.spring_boot_bootstrap_table" level="INFO" />
+		<logger name="cn.com.ttblog.spring_boot_bootstrap_table" level="DEBUG" />
 		<logger name="jdbc.resultsettable" level="INFO" />
 		<logger name="jdbc.connection" level="OFF" />
 		<logger name="jdbc.audit" level="OFF" />

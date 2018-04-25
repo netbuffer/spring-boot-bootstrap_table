@@ -6,6 +6,8 @@ import cn.com.ttblog.spring_boot_bootstrap_table.service.IUserService;
 import com.alibaba.fastjson.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,7 +32,7 @@ public class UserController {
 	private IUserService userService;
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-
+	private static final String USER_CACHE_STR="userCache";
 //	@InitBinder
 //	public void initBinder(WebDataBinder binder){
 //	}
@@ -101,6 +103,11 @@ public class UserController {
 		return result;
 	}
 
+	/**
+	 * https://docs.spring.io/spring/docs/4.2.9.RELEASE/spring-framework-reference/htmlsingle/#cache-spel-context
+	 * @return
+	 */
+	@Cacheable(value = USER_CACHE_STR,key = "#root.methodName")
 	@RequestMapping("/datacount")
 	public @ResponseBody Map<String, Object> datacount() {
 		logger.debug("获取datacount");
@@ -246,5 +253,11 @@ public class UserController {
 		us.add(userService.getUserById(1));
 		us.add(userService.getUserById(2));
 		return us;
+	}
+
+	@CacheEvict(value = USER_CACHE_STR)
+	@RequestMapping(method = RequestMethod.GET, value = "/evict")
+	public @ResponseBody String evict() {
+		return USER_CACHE_STR;
 	}
 }

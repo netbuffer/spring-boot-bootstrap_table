@@ -5,6 +5,9 @@ banner:
 spring:
   profiles:
     active: dev
+  cache:
+    type: redis
+
 logging:
   # logback配置文件命名为logback.xml会导致启动不起来
   config: classpath:logback-springboot.xml
