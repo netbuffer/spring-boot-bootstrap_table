@@ -1,9 +1,9 @@
 package cn.com.ttblog.spring_boot_bootstrap_table.config;
 
+import ch.qos.logback.classic.ViewStatusMessagesServlet;
 import cn.com.ttblog.spring_boot_bootstrap_table.interceptor.SpringMvcInterceptor;
 import cn.com.ttblog.spring_boot_bootstrap_table.views.JsonViewResolver;
-import com.alibaba.fastjson.support.spring.FastJsonJsonView;
-import org.springframework.beans.factory.BeanFactory;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -20,11 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  spring boot默认的错误处理由org.springframework.boot.autoconfigure.web.BasicErrorController处理，
+ * spring boot默认的错误处理由org.springframework.boot.autoconfigure.web.BasicErrorController处理，
  */
 @Configuration
 @EnableWebMvc
-public class MvcConfig extends WebMvcConfigurerAdapter{
+public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureContentNegotiation(
@@ -41,14 +41,14 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
         List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
         // jsp view resolver
         resolvers.add(internalResourceViewResolver());
-        JsonViewResolver jsonViewResolver=new JsonViewResolver();
+        JsonViewResolver jsonViewResolver = new JsonViewResolver();
         resolvers.add(jsonViewResolver);
         resolver.setViewResolvers(resolvers);
         return resolver;
     }
 
     @Bean
-    public ViewResolver internalResourceViewResolver () {
+    public ViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/");
         viewResolver.setSuffix(".jsp");
@@ -75,6 +75,17 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         multipartResolver.setMaxUploadSize(1000000);
         return multipartResolver;
+    }
+
+    /**
+     * 注册自定义的servlet
+     * @return
+     */
+    @Bean
+    public ServletRegistrationBean AaServletRegistration() {
+        ServletRegistrationBean registration = new ServletRegistrationBean(new ViewStatusMessagesServlet());
+        registration.addUrlMappings("/logback/status");
+        return registration;
     }
 
     @Override
