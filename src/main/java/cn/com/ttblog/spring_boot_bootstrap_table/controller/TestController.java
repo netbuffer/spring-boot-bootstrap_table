@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.Cookie;
@@ -56,6 +57,12 @@ public class TestController {
     public String redirect(RedirectAttributes redirectAttributes, @RequestParam(value = "name", required = false, defaultValue = "value") String name) {
         redirectAttributes.addAttribute("name", name);
         return "redirect:/cookie.html";
+    }
+
+    @RequestMapping(value = "contextpath")
+    @ResponseBody
+    public String contextPath(HttpServletRequest request) {
+        return request.getServletContext().getContextPath();
     }
 
 //	@ExceptionHandler
