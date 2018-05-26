@@ -2,6 +2,7 @@ package cn.com.ttblog.spring_boot_bootstrap_table.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,13 @@ import javax.servlet.http.HttpSession;
 public class TestController {
 
     private static final Logger LOG = LoggerFactory.getLogger(TestController.class);
+
+    public static String serverPort;
+
+    @Value("${server.port}")
+    public void setServerPort(String serverPort) {
+        TestController.serverPort = serverPort;
+    }
 
     //退出系统
     @RequestMapping(value = "/err", method = RequestMethod.GET)
@@ -63,6 +71,13 @@ public class TestController {
     @ResponseBody
     public String contextPath(HttpServletRequest request) {
         return request.getServletContext().getContextPath();
+    }
+
+    @RequestMapping(value = "server/port")
+    @ResponseBody
+    public String getServerPort() {
+        LOG.info("server.port:{}", serverPort);
+        return serverPort;
     }
 
 //	@ExceptionHandler
