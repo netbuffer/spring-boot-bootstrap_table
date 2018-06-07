@@ -82,7 +82,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
      * @return
      */
     @Bean
-    public ServletRegistrationBean AaServletRegistration() {
+    public ServletRegistrationBean servletRegistration() {
         ServletRegistrationBean registration = new ServletRegistrationBean(new ViewStatusMessagesServlet());
         registration.addUrlMappings("/logback/status");
         return registration;
