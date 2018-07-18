@@ -50,6 +50,7 @@
         </connectionSource>  
     </appender> -->
 	<springProfile name="dev">
+		<logger name="org.springframework.aop.interceptor.CustomizableTraceInterceptor" level="TRACE"/>
 		<logger name="org.springframework" level="WARN" />
 		<logger name="org.hibernate" level="OFF" />
 		<logger name="org.apache" level="INFO" />
