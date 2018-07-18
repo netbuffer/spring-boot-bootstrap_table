@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @NamedQuery(name = "User.findByN", query = "select u from User u where u.name = ?1")
 @Entity
 @Table(name = "user")
-@XmlRootElement
+@XmlRootElement(name = "user")
 public class User implements Serializable {
 
 	/**
