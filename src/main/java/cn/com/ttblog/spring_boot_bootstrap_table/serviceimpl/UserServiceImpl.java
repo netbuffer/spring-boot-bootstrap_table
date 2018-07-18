@@ -22,6 +22,7 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private IUserDao userDao;
 
+	@Transactional(readOnly = true)
 	@Override
 	public User getUserById(long userId) {
 		return userDao.getUserById(userId);
