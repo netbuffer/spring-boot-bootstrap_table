@@ -33,6 +33,12 @@ spring:
           statement-close-after-log-enabled: false
           result-set-open-after-log-enabled: false
           result-set-close-after-log-enabled : false
+  jpa:
+    properties:
+      hibernate:
+        ejb:
+         interceptor: cn.com.ttblog.spring_boot_bootstrap_table.interceptor.HibernateInterceptor
+
 
 #actuator访问路径前缀,便于做统一的拦截处理
 # 测试发现在Config文件中配置jsp的路径才有效,这里配置不生效

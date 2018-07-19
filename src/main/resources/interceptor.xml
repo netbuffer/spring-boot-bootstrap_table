@@ -4,8 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="customizableTraceInterceptor" class="org.springframework.aop.interceptor.CustomizableTraceInterceptor">
-        <property name="enterMessage" value="执行jpa方法 $[methodName]($[arguments])"/>
-        <property name="exitMessage" value="结束执行jpa方法 $[methodName](): $[returnValue]"/>
+        <!--自定义sdj执行日志打印-->
+        <!--<property name="enterMessage" value="执行jpa方法 $[methodName]($[arguments])"/>-->
+        <!--<property name="exitMessage" value="结束执行jpa方法 $[methodName](): $[returnValue]"/>-->
     </bean>
     <aop:config>
         <aop:advisor advice-ref="customizableTraceInterceptor"
