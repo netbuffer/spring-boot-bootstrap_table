@@ -172,7 +172,20 @@
             <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>cn.netbuffer</groupId>
+            <artifactId>print-server-address</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>netbuffer-maven-master-repository</id>
+            <name>netbuffer-maven-master-repository</name>
+            <url>https://raw.githubusercontent.com/netbuffer/maven-repo/master/repository</url>
+        </repository>
+    </repositories>
 
     <build>
         <finalName>spring-boot-bootstrap_table</finalName>

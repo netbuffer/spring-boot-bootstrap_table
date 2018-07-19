@@ -1,10 +1,12 @@
 package cn.com.ttblog;
 
+import cn.netbuffer.printserveraddress.listener.SpringBootAppStartedListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -15,6 +17,11 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @ImportResource(value = {"classpath:interceptor.xml"})
 public class SpringBootBootstrapTableApplication extends SpringBootServletInitializer {
+
+    @Bean
+    public SpringBootAppStartedListener buildSpringBootAppStartedListener(){
+        return new SpringBootAppStartedListener();
+    }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
