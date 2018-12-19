@@ -4,6 +4,7 @@ import cn.com.ttblog.spring_boot_bootstrap_table.constant.ConfigConstant;
 import cn.com.ttblog.spring_boot_bootstrap_table.model.User;
 import cn.com.ttblog.spring_boot_bootstrap_table.service.IUserService;
 import com.alibaba.fastjson.JSONArray;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
+@Api(value = "/user", tags = {"user api"})
 public class UserController {
 
     @Resource
