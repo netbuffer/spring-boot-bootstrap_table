@@ -27,6 +27,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.7</java.version>
         <lombok.version>1.16.18</lombok.version>
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
     </properties>
 
     <dependencies>
@@ -175,7 +176,23 @@
         <dependency>
             <groupId>cn.netbuffer</groupId>
             <artifactId>print-server-address</artifactId>
-            <version>1.0.1</version>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/swagger-bootstrap-ui -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.8.8</version>
         </dependency>
     </dependencies>
 
