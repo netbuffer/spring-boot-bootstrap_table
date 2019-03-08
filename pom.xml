@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.com.ttblog</groupId>
+    <groupId>cn.netbuffer</groupId>
     <artifactId>spring-boot-bootstrap_table</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <!--
@@ -119,7 +119,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.23</version>
+            <version>1.2.56</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -140,7 +140,7 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
+            <version>1.4</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
