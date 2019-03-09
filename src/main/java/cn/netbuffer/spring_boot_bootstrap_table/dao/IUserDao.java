@@ -104,4 +104,9 @@ public interface IUserDao extends JpaRepository<User,Long>,JpaSpecificationExecu
 //	// Enabling static ORDER BY for a query
 //	List<Person> findByLastnameOrderByFirstnameAsc(String lastname);
 //	List<Person> findByLastnameOrderByFirstnameDesc(String lastname);
+
+	//测试分页未生效
+	@Query(value = "select * from user \n#pageable\n",
+			countQuery = "select count(*) from user", nativeQuery = true)
+	Page<User> findAll(Pageable pageable);
 }
