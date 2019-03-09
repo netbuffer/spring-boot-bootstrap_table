@@ -13,10 +13,10 @@ management:
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://127.0.0.1:3306/u
+      url: jdbc:log4jdbc:mysql://127.0.0.1:3306/u?characterEncoding=UTF-8
       username: root
       password: root
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
       initial-size: 1
       min-idle: 1
       max-active: 5
@@ -33,11 +33,6 @@ spring:
           statement-close-after-log-enabled: false
           result-set-open-after-log-enabled: false
           result-set-close-after-log-enabled : false
-  jpa:
-    properties:
-      hibernate:
-        ejb:
-         interceptor: cn.com.ttblog.spring_boot_bootstrap_table.interceptor.HibernateInterceptor
 
 
 #actuator访问路径前缀,便于做统一的拦截处理
