@@ -176,7 +176,7 @@
         <dependency>
             <groupId>cn.netbuffer</groupId>
             <artifactId>print-server-address</artifactId>
-            <version>1.1.1</version>
+            <version>2.1.0</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
@@ -195,14 +195,6 @@
             <version>1.8.8</version>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>netbuffer-maven-master-repository</id>
-            <name>netbuffer-maven-master-repository</name>
-            <url>https://raw.githubusercontent.com/netbuffer/maven-repo/master/repository</url>
-        </repository>
-    </repositories>
 
     <build>
         <finalName>spring-boot-bootstrap_table</finalName>
