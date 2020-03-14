@@ -1,22 +1,25 @@
 server:
   port: 8081
-endpoints:
-  enabled: true #可以在这里禁用actuator
-  shutdown:
-    enabled: true #启用shutdown
+
 management:
-  context-path: /mge
-  security:
-    enabled: false
+  endpoints:
+    enabled-by-default: true
+  endpoint:
+    shutdown:
+      enabled: true
+  server:
+    servlet:
+      context-path: /mge
 
 # 配置:https://github.com/alibaba/druid/blob/master/druid-spring-boot-starter/src/test/resources/config-template.properties
 spring:
   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/u?characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     druid:
-      url: jdbc:log4jdbc:mysql://127.0.0.1:3306/u?characterEncoding=UTF-8
-      username: root
-      password: root
-      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
       initial-size: 1
       min-idle: 1
       max-active: 5
