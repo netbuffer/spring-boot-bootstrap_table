@@ -9,11 +9,9 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.scheduling.annotation.Async;
 
 import javax.persistence.LockModeType;
 import java.util.List;
-import java.util.concurrent.Future;
 
 /**
  * http://docs.spring.io/spring-data/data-jpa/docs/1.10.1.RELEASE/reference/html/#repositories.query-methods.query-creation
@@ -76,9 +74,6 @@ public interface IUserDao extends JpaRepository<User,Long>,JpaSpecificationExecu
 	//select .. where name like name
 	List<User> findByNameLike(String name);
 	List<User> findByNameLike(String name, Pageable pageable);
-
-	@Async
-	Future<User> findById(Long id);
 
 	@Query(value = "select u from User u where u.id=?1")
 	@Lock(value = LockModeType.PESSIMISTIC_WRITE)
