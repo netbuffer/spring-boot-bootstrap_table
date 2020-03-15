@@ -1,6 +1,7 @@
 ### spring-boot bootstrap_table demo
+> https://github.com/netbuffer/spring-boot-bootstrap_table
 ---
-* spring-boot 1.5.3
+* spring-boot 2.1.13.RELEASE
 * spring-boot-starter-actuator
 * spring-boot-devtools
 * spring-data-jpa
