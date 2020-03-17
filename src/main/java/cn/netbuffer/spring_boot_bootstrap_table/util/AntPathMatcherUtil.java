@@ -17,7 +17,7 @@ public class AntPathMatcherUtil {
 			if(m.length()>0){
 				String ms=m.trim();
 				if(ap.match(ms,uri)){
-					LOG.warn("匹配:{}---{}",ms,uri);
+					LOG.debug("匹配:{}---{}",ms,uri);
 					return true;
 				}
 			}

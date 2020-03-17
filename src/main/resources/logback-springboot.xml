@@ -65,7 +65,7 @@
 	</springProfile>
 
 	<springProfile name="test">
-		<logger name="org.springframework" level="DEBUG" />
+		<logger name="org.springframework" level="INFO" />
 		<logger name="java.sql" level="OFF" />
 		<logger name="cn.netbuffer.spring_boot_bootstrap_table" level="INFO" />
 		<logger name="jdbc.resultsettable" level="INFO" />

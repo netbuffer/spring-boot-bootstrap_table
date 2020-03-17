@@ -13,24 +13,24 @@ public class SpringMvcInterceptor extends HandlerInterceptorAdapter{
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        LOG.info("=============================================================prehandle interceptor");
-        LOG.info("request.getRequestURI():{},request.getRemoteAddr():{}",request.getRequestURI(),request.getRemoteAddr());
-        LOG.info("=============================================================prehandle interceptor");
+        LOG.debug("=============================================================prehandle interceptor");
+        LOG.debug("request.getRequestURI():{},request.getRemoteAddr():{}",request.getRequestURI(),request.getRemoteAddr());
+        LOG.debug("=============================================================prehandle interceptor");
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        LOG.info("postHandle interceptor");
+        LOG.debug("postHandle interceptor");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        LOG.info("afterCompletion interceptor");
+        LOG.debug("afterCompletion interceptor");
     }
 
     @Override
     public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        LOG.info("afterConcurrentHandlingStarted interceptor");
+        LOG.debug("afterConcurrentHandlingStarted interceptor");
     }
 }

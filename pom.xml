@@ -189,6 +189,11 @@
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>1.8.8</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
     </dependencies>
 
     <build>
