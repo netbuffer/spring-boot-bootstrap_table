@@ -75,5 +75,8 @@
 	<button onclick="test();">ajax</button>&emsp; <button onclick="testjsonp();">testjsonp</button>
 	<hr/>
 	<a href="${basepath}/metrics">metrics</a>
+    <c:set var="html" value="<h1>标题内容</h1>"/>
+	html:${html}<br/>
+	html escapeXml:<c:out value="${html}" escapeXml="true"/>
 </body>
 </html>
