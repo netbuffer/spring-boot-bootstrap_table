@@ -11,9 +11,6 @@ https://gitee.com/netbuffer/spring-boot-bootstrap_table
 * bootstrap-table1.9
 * log4jdbc-log4j2
 
-# 微信扫码使用gitee工具
-![gitee工具](https://s1.ax1x.com/2018/08/10/P60MMF.jpg)
-
 # other projects
 > `ssmbootstrap_table(spring+springmvc+mybatis)` github:[https://github.com/netbuffer/ssmbootstrap_table](https://github.com/netbuffer/ssmbootstrap_table)`/`git@osc:[https://gitee.com/netbuffer/ssmbootstrap_table](https://gitee.com/netbuffer/ssmbootstrap_table)    
 
