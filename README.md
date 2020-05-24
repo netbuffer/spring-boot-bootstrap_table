@@ -1,14 +1,14 @@
 ### spring-boot bootstrap_table demo
-> https://github.com/netbuffer/spring-boot-bootstrap_table
+> ![springboot-2.1.13.RELEASE](https://img.shields.io/badge/springboot-2.1.13.RELEASE-blue.svg?color=blue&message=)  ![bootstrap-3.3.0](https://img.shields.io/badge/bootstrap-3.3.0-blue.svg?color=blue&message=)       
+https://github.com/netbuffer/spring-boot-bootstrap_table  
+https://gitee.com/netbuffer/spring-boot-bootstrap_table
 ---
-* spring-boot 2.1.13.RELEASE
 * spring-boot-starter-actuator
 * spring-boot-devtools
 * spring-data-jpa
 * druid-spring-boot-starter 1.1.4
 * integration with jsp
 * bootstrap-table1.9
-* bootstrap3  
 * log4jdbc-log4j2
 
 # 微信扫码使用gitee工具
