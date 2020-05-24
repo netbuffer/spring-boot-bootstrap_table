@@ -23,7 +23,9 @@ public class Book {
     }
 
     /**
-     * 组排序
+     * 组序列
+     * 按照定义的验证顺序来依次验证,当前面的验证规则通过才会执行后续验证
+     * 规则注解中没有标记组的，从属于Default组
      */
     @GroupSequence(value = {
             AddBookGroup.class,
