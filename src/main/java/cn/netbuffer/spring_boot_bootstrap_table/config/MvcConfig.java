@@ -1,8 +1,10 @@
 package cn.netbuffer.spring_boot_bootstrap_table.config;
 
 import ch.qos.logback.classic.ViewStatusMessagesServlet;
+import ch.qos.logback.classic.helpers.MDCInsertingServletFilter;
 import cn.netbuffer.spring_boot_bootstrap_table.interceptor.SpringMvcInterceptor;
 import cn.netbuffer.spring_boot_bootstrap_table.views.JsonViewResolver;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import javax.servlet.Filter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +28,17 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {
+
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        Filter mdcInsertingServletFilter = new MDCInsertingServletFilter();
+        registrationBean.setFilter(mdcInsertingServletFilter);
+        List<String> urlPatterns = new ArrayList<>();
+        urlPatterns.add("/*");
+        registrationBean.setUrlPatterns(urlPatterns);
+        return registrationBean;
+    }
 
     @Override
     public void configureContentNegotiation(
@@ -79,6 +93,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     /**
      * 注册自定义的servlet
+     *
      * @return
      */
     @Bean
