@@ -1,6 +1,7 @@
 ### spring-boot bootstrap_table demo
-> ![springboot-2.1.13.RELEASE](https://img.shields.io/badge/springboot-2.1.13.RELEASE-blue.svg?color=blue&message=)  ![bootstrap-3.3.0](https://img.shields.io/badge/bootstrap-3.3.0-blue.svg?color=blue&message=)     
-https://github.com/netbuffer/spring-boot-bootstrap_table
+> ![springboot-2.1.13.RELEASE](https://img.shields.io/badge/springboot-2.1.13.RELEASE-blue.svg?color=blue&message=)  ![bootstrap-3.3.0](https://img.shields.io/badge/bootstrap-3.3.0-blue.svg?color=blue&message=)       
+https://github.com/netbuffer/spring-boot-bootstrap_table  
+https://gitee.com/netbuffer/spring-boot-bootstrap_table
 ---
 * spring-boot-starter-actuator
 * spring-boot-devtools
