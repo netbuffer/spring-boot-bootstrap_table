@@ -49,4 +49,8 @@ public class Book {
     private List<Integer> pages;
     //级联验证
     private List<@Valid Book> books;
+
+    public void print(@Valid Book book) {
+        System.out.println("打印book信息:" + book.getName());
+    }
 }

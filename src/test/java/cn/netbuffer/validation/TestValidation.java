@@ -9,16 +9,19 @@ import org.junit.Test;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
+import javax.validation.executable.ExecutableValidator;
 import java.util.Set;
 
 @Slf4j
 public class TestValidation {
 
     private Validator validator;
+    private ExecutableValidator executableValidator;
 
     @Before
     public void before() {
         validator = Validation.buildDefaultValidatorFactory().getValidator();
+        executableValidator = validator.forExecutables();
     }
 
     @Test
@@ -57,6 +60,14 @@ public class TestValidation {
         constraintViolations.forEach(c -> {
             log.info("校验错误信息:{}", c.getMessage());
         });
+    }
+
+    @Test
+    public void testValidateParameters() throws NoSuchMethodException {
+        Book book = new Book();
+        Set<ConstraintViolation<Book>> constraintViolations = executableValidator
+                .validateParameters(book, book.getClass().getMethod("print", Book.class), new Object[]{book}, Book.Group.class);
+        log.info("invoke print method validate:{}", constraintViolations);
     }
 
 }
