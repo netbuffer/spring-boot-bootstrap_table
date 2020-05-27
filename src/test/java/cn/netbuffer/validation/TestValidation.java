@@ -82,4 +82,9 @@ public class TestValidation {
         log.info("invoke build method validate:{}", constraintViolations);
     }
 
+    @Test
+    public void testValidateConstructorParameters() throws NoSuchMethodException {
+//        Set<ConstraintViolation<Book>> constraintViolations = executableValidator.validateConstructorParameters();
+    }
+
 }
