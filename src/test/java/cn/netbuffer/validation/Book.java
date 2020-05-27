@@ -53,4 +53,10 @@ public class Book {
     public void print(@Valid Book book) {
         System.out.println("打印book信息:" + book.getName());
     }
+
+    public @Valid Book build() {
+        Book book = new Book();
+        System.out.println("构造book信息:" + book);
+        return book;
+    }
 }

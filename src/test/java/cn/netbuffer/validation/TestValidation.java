@@ -10,6 +10,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.executable.ExecutableValidator;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Set;
 
 @Slf4j
@@ -68,6 +70,16 @@ public class TestValidation {
         Set<ConstraintViolation<Book>> constraintViolations = executableValidator
                 .validateParameters(book, book.getClass().getMethod("print", Book.class), new Object[]{book}, Book.Group.class);
         log.info("invoke print method validate:{}", constraintViolations);
+    }
+
+    @Test
+    public void testValidateReturnValue() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Book book = new Book();
+        Method method = book.getClass().getMethod("build");
+        Object returnValue = method.invoke(book);
+        Set<ConstraintViolation<Book>> constraintViolations = executableValidator
+                .validateReturnValue(book, method, returnValue, Book.Group.class);
+        log.info("invoke build method validate:{}", constraintViolations);
     }
 
 }
