@@ -1,0 +1,11 @@
+### /user/add
+POST http://localhost:8081/dev/user
+Content-Type: application/x-www-form-urlencoded
+Cookie: JSESSIONID=CADE90B48B22910FCF18384CE394FD50;
+
+name=netbuffer&age=32&sex=男&phone=13811111111
+
+### /user/userlist
+GET http://localhost:8081/dev/user/userlist.json?sort=adddate&order=desc&limit=10&offset=0
+Cookie: JSESSIONID=CADE90B48B22910FCF18384CE394FD50;
+
