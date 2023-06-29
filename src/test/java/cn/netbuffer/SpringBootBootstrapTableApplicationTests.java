@@ -53,7 +53,7 @@ public class SpringBootBootstrapTableApplicationTests {
         int size = 1;
 //        Sort sort = new Sort(Sort.Direction.DESC, "adddate");
 //        PageRequest pageRequest = new PageRequest(page-1, size, sort);
-        PageRequest pageRequest = new PageRequest(page - 1, size);
+        PageRequest pageRequest = PageRequest.of(page - 1, size);
         Page<User> users = userDao.findAll(pageRequest);
         System.out.println("query users:{}" + ToStringBuilder.reflectionToString(users));
     }
