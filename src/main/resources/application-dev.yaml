@@ -15,7 +15,7 @@ management:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/u?characterEncoding=UTF-8
+    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/u?useSSL=false&characterEncoding=utf8
     username: root
     password: root
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
