@@ -3,13 +3,13 @@ server:
 
 management:
   endpoints:
-    enabled-by-default: true
+    web:
+      base-path: /mge
+      exposure:
+        include: "*"
   endpoint:
     shutdown:
       enabled: true
-  server:
-    servlet:
-      context-path: /mge
 
 # 配置:https://github.com/alibaba/druid/blob/master/druid-spring-boot-starter/src/test/resources/config-template.properties
 spring:
